@@ -1,0 +1,166 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Organisers | Krpton</title>
+    <link rel="stylesheet" href={% static "org.css" %} />
+
+    <!--swiper css-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!--font awesome-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+  
+    <!--css file-->
+    <link rel="stylesheet" href="org.css" />
+  
+  </head>
+  <body>
+    <!-- header section starts  -->
+    <header class="nav">
+      <i class="uil uil-bars navOpenBtn"></i>
+      <a href="#" class="logo"><span>k</span>rpton</a>
+
+      <nav class="nav-links">
+        <i class="uil uil-times navCloseBtn"></i>
+        <a href="#home">Home</a>
+      
+        <a href="#about">About</a>
+        <a href="#gallery">My Events</a>
+        <a href="#gallery">Contact</a>
+       
+        <a href="#contact">Login</a>
+   
+      </nav>
+      <i class="uil uil-search search-icon" id="searchIcon"></i>
+      <div class="search-box">
+        <i class="uil uil-search search-icon"></i>
+        <input type="text" placeholder="Search here..." />
+      </div>
+     
+    </header>
+
+    <!-- home section starts  -->
+    <section class="home" id="home">
+      <div class="content">
+        <h3>
+          
+          <span> Organizer Dashboard</span>
+        </h3>
+        <a href="#" class="btn">Organize Event</a>
+      </div>
+
+     
+    </section>
+
+    <div class="content" >
+      <center>
+      <h2 class="event">Event Details</h2><br />
+  
+      <div class="div_deg">
+          <form action="#" method="POST">
+              <div>
+                  <label class="label" for="">Event name :</label>
+                  <input type="text" name="username" placeholder="Event Name" required>
+              </div>
+              <div>
+                  <label  class="label" for="">Venue :</label>
+                  <input type="text" name="venue" placeholder="place held" required>
+              </div>
+              <div>
+                  <label class="label" for="">Date and Time :</label>
+                  <input type="text" name="date"  placeholder="DD-MM-YYYY@time" required>
+              </div>
+              <div>
+                  <label  class="label" for="">Description :</label>
+                  <input type="text" name="desc" required> 
+              </div>
+              
+              <div>
+                  <input type="submit" class="btn btn-primary" name="add_student" value="Save" required>
+              </div>
+                    
+          </form>
+      </div>
+      </center>
+     
+     </div>
+   <br/> <br />
+    
+   <section id="home">
+    <div class="content">
+     
+    
+     
+       
+      
+        <form >
+        <h2>  <span> Upload Registration form for your event here :</span></h2>
+        <label for="reg"><input type="url" class="input" id="reg" placeholder="https://example.com" pattern="https://.*" size="25" required></label>
+        </form>
+     
+      
+    </div>
+
+   
+  </section>
+
+  <br/> <br />
+    <!-- footer section starts  -->
+    <section class="footer">
+      <div class="box-container">
+       
+
+        <div class="box">
+          <h3>quick links</h3>
+          <a href="#"> <i class="fas fa-arrow-right"></i> home </a>
+          <a href="#"> <i class="fas fa-arrow-right"></i> about </a>
+          <a href="#"> <i class="fas fa-arrow-right"></i> My events </a>
+          
+          <a href="#"> <i class="fas fa-arrow-right"></i> contact </a>
+        </div>
+
+        <div class="box">
+          <h3>contact info</h3>
+          <a href="#"> <i class="fas fa-phone"></i> 8341126963 </a>
+          <a href="#"> <i class="fas fa-phone"></i> 9876785445</a>
+          <a href="#"> <i class="fas fa-envelope"></i> nishkaprasan.n@gmail.com </a>
+          <a href="#"> <i class="fas fa-envelope"></i> rajimachi@gmail.com </a>
+          <a href="#">
+            <i class="fas fa-map-marker-alt"></i>Kadapa, India - 560054
+          </a>
+        </div>
+
+        <div class="box">
+          <h3>follow us</h3>
+          <a href="#"> <i class="fab fa-facebook-f"></i> facebook </a>
+          <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
+          <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
+          <a href="#"> <i class="fab fa-linkedin-in"></i> linkedin </a>
+        </div>
+      </div>
+
+      <div class="credit">
+        created by <span>Krpton</span> | all rights reserved
+      </div>
+    </section>
+
+   
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <!--JS file-->
+    <script src="app.js"></script>
+  </body>
+</html>

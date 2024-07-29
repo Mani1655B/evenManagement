@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href={% static "admin.css" %}>
+    <link rel="stylesheet" href={% static "style.css" %}>
+</head>
+<body>
+     <!-- home section starts  -->
+     <section class="home" id="home">
+        <div class="content">
+          <h3>
+           
+            <span> My Events </span>
+            Dashboard
+          </h3>
+         
+        </div>
+
+<div class="container">
+<div class="table-wrapper">
+<div class="table-title">
+<div class="row">
+<div class="col-sm-8"><h2 style="font-size: 30px;color: #fff;">My <b>Events</b></h2></div>
+<div class="col-sm-4">
+
+</div>
+</div>
+</div>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th style="font-size: x-large;color: #fff;" class="name">Event Name</th>
+
+<th style="font-size: x-large;color: #fff;" class="desc">Description</th>
+<th style="font-size: x-large;color: #fff;" class="venue">Venue</th>
+<th style="font-size: x-large;color: #fff;" class="contact">Contact</th>
+<th style="font-size: x-large;color: #fff;" class="action">Date and Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+
+{% for event in events %}
+<tr>
+  <td style="font-size: 20px;" class="name">{{ event.name }}</td>
+  <td style="font-size: 15px;" class="desc">{{ event.description }}</td>
+  <td style="font-size: 15px;" class="venue">{{ event.venue }}</td>
+  <td style="font-size: 15px;" class="contact">{{ event.organizer.user.email }}</td>
+  <td style="font-size: 15px;" class="action">{{ event.start_time }}</td>
+</tr>
+{% endfor %}  
+
+
+</tbody>
+</table>
+</div>
+</div>
+</body>
+</html>

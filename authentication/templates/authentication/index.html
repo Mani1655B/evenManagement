@@ -1,0 +1,321 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <!--Created by Tivotal-->
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Organisers | Tivotal</title>
+
+    <!--swiper css-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+    />
+
+    <!--font awesome-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+
+    <!--css file-->
+    <link rel="stylesheet" href={% static "index.css" %} />
+  </head>
+  <body>
+    
+    <!-- header section starts  -->
+    <header class="header">
+      <a href="#" class="logo"><span>k</span>rpton</a>
+
+      <nav class="navbar">
+        <a href="#home">Home</a>
+        
+        <a href="#about">about</a>
+        <a href="#gallery">Past Events</a>
+        <a href="#con">Contact</a>
+        <a href="{% url 'myevents' %}">My events</a>
+        {% if role == 'organizer' %}
+        <a href="organizer_events/">Event Organised</a>
+        {% endif %}
+        <a href="admin">Admin</a>
+        {% if user.is_authenticated %}
+        <a href="logout/">logout</a>
+        {% else %}
+        <a href="login/">login</a>
+        {% endif %}
+      </nav>
+
+      <div id="menu-bars" class="fas fa-bars"></div>
+    </header>
+
+    <!-- home section starts  -->
+    <section class="home" id="home">
+      <div class="content">
+        <h3>
+          where your ideas take off
+          <span> krpton events </span>
+        </h3>
+        <a href="#" class="btn">get quote</a>
+      </div>
+
+      <div class="swiper-container home-slider">
+        <div class="swiper-wrapper">
+          {% for image in images %}
+          <div class="swiper-slide">
+            <img src={{image.photo.url}} alt="" />
+          </div>
+          {% endfor %}
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- about section starts  -->
+    <section class="about" id="about">
+      <h1 class="heading"><span>about</span> us</h1>
+
+      <div class="row">
+        <div class="image">
+          <img src="images/college.jpg" alt="" />
+        </div>
+
+        <div class="content">
+          <h3>your occasion deserves our careful planning</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
+            labore fugiat ut esse perferendis perspiciatis provident dolores
+            fuga in facilis culpa possimus, quia praesentium itaque, sapiente
+            quasi harum rem asperiores.
+          </p>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat
+            vero expedita incidunt provident quibusdam aut odit, numquam
+            nesciunt similique nisi.
+          </p>
+          <a href="#" class="btn">reach us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- service section starts  -->
+    <section class="service" id="service">
+      <h1 class="heading">UpComing <span>Events</span></h1>
+
+      <div class="box-container">
+        {% for event in events %}
+        <div class="box">
+          <i class="fas fa-envelope"></i>
+          <h3>{{event.name}}</h3>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro,
+            suscipit.
+          </p>
+          <form action="register/" method="POST">
+            {% csrf_token %}
+            <input type="hidden" id="event_name" name="event_name" value="{{event.name}}" />
+            <input type="submit" value="register" class="btn"/>
+          </form>
+          <a href="recruit/" class="btn-vol">Hiring Volunters</a>
+        </div>
+        {% endfor %}
+      </div>
+        
+    </section>
+    <!-- gallery section starts  -->
+    <section class="gallery" id="gallery">
+      <h1 class="heading">Past &nbsp;<span>Events</span></h1>
+      
+      {% for past_event in past_events %}
+      <div class="box-container">
+        <div class="box">
+          <img src="{{past_event.images.photo}}" alt="{{past_event.name}}" />
+          <h3 class="title">{{past_event.name}}</h3>
+          <div class="icons">
+            <a href="#" class="fas fa-heart"></a>
+            <a href="#" class="fas fa-share"></a>
+            <a href="#" class="fas fa-eye"></a>
+          </div>
+        </div>
+      {% endfor %}
+    </section> 
+
+    <!-- review section starts  -->
+    <section class="reivew" id="review">
+      <h1 class="heading"><span>Testimonials</span></h1>
+
+      <div class="review-slider swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide box">
+            <i class="fas fa-quote-right"></i>
+            <div class="user">
+              <img src="images/img1.jpg" alt="" />
+              <div class="user-info">
+                <h3>nayana</h3>
+                <span>happy customer</span>
+              </div>
+            </div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+              dolor dicta cum. Eos beatae eligendi, magni numquam nemo sed ut
+              corrupti, ipsam iure nisi unde et assumenda perspiciatis
+              voluptatibus nihil.
+            </p>
+          </div>
+
+          <div class="swiper-slide box">
+            <i class="fas fa-quote-right"></i>
+            <div class="user">
+              <img src="images/img2.jpg" alt="" />
+              <div class="user-info">
+                <h3>lisa</h3>
+                <span>happy customer</span>
+              </div>
+            </div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+              dolor dicta cum. Eos beatae eligendi, magni numquam nemo sed ut
+              corrupti, ipsam iure nisi unde et assumenda perspiciatis
+              voluptatibus nihil.
+            </p>
+          </div>
+
+          <div class="swiper-slide box">
+            <i class="fas fa-quote-right"></i>
+            <div class="user">
+              <img src="images/img3.jpg" alt="" />
+              <div class="user-info">
+                <h3>mary</h3>
+                <span>happy customer</span>
+              </div>
+            </div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+              dolor dicta cum. Eos beatae eligendi, magni numquam nemo sed ut
+              corrupti, ipsam iure nisi unde et assumenda perspiciatis
+              voluptatibus nihil.
+            </p>
+          </div>
+
+          <div class="swiper-slide box">
+            <i class="fas fa-quote-right"></i>
+            <div class="user">
+              <img src="images/img4.jpg" alt="" />
+              <div class="user-info">
+                <h3>rose</h3>
+                <span>happy customer</span>
+              </div>
+            </div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+              dolor dicta cum. Eos beatae eligendi, magni numquam nemo sed ut
+              corrupti, ipsam iure nisi unde et assumenda perspiciatis
+              voluptatibus nihil.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- contact section starts  -->
+    <section class="contact" id="contact">
+      <h1 class="heading"><span>contact</span> us</h1>
+
+      <form action="contact/" method="get">
+        <div class="inputBox">
+          <input type="text" placeholder="name" id="name" name="name" />
+          <input type="email" placeholder="email" id ="mail" name="mail" />
+        </div>
+        <div class="inputBox">
+          <input type="tel" placeholder="number" id="number" name="number" />
+          <input type="text" placeholder="subject" id="subject" name="subject"/>
+        </div>
+        <textarea
+          placeholder="message"
+          cols="30"
+          rows="10"
+          id="message"
+          name="message"
+        ></textarea>
+        <input type="submit" value="send message" class="btn" />
+      </form>
+    </section>
+
+    <!-- footer section starts  -->
+    <section class="footer">
+      <div class="box-container">
+        <div class="box">
+          <h3>quick links</h3>
+          <a href="#"> <i class="fas fa-arrow-right"></i> home </a>
+          <a href="#"> <i class="fas fa-arrow-right"></i> about </a>
+          <a href="#"> <i class="fas fa-arrow-right"></i> My events </a>
+
+          <a href="#con"> <i class="fas fa-arrow-right"></i> contact </a>
+        </div>
+
+        <div class="box">
+          <h3>contact info</h3>
+          <a href="#"> <i class="fas fa-phone"></i> 8341126963 </a>
+          <a href="#"> <i class="fas fa-phone"></i> 3467896531</a>
+          <a href="#">
+            <i class="fas fa-envelope"></i> nishkaprasan.n@gmail.com
+          </a>
+          <a href="#"> <i class="fas fa-envelope"></i> rajimachi@gmail.com </a>
+          <a href="#">
+            <i class="fas fa-map-marker-alt"></i>Kadapa, India - 560054
+          </a>
+        </div>
+
+        <div class="box" id="con">
+          <h3>follow us</h3>
+          <a href="#"> <i class="fab fa-facebook-f"></i> facebook </a>
+          <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
+          <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
+          <a href="#"> <i class="fab fa-linkedin-in"></i> linkedin </a>
+        </div>
+      </div>
+
+      <div class="credit">
+        created by <span>Krpton</span> | all rights reserved
+      </div>
+    </section>
+
+    <!-- theme toggler  -->
+    <div class="theme-toggler">
+      <div class="toggle-btn">
+        <i class="fas fa-cog"></i>
+      </div>
+
+      <h3>Color Mode</h3>
+
+      <button id="showIframeButton"><i class="fas fa-comments"></i></button>
+      <div class="buttons">
+        <div class="theme-btn" style="background: #ccff33"></div>
+        <div class="theme-btn" style="background: #d35400"></div>
+        <div class="theme-btn" style="background: #f39c12"></div>
+        <div class="theme-btn" style="background: #1abc9c"></div>
+        <div class="theme-btn" style="background: #3498db"></div>
+        <div class="theme-btn" style="background: #9b59b6"></div>
+      </div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <!--JS file-->
+    <script src="app.js"></script>
+    <script>
+      window.embeddedChatbotConfig = {
+      chatbotId: "ySVh76-qh4wTS0UfXLYoE",
+      domain: "www.chatbase.co"
+      }
+      </script>
+      <script
+      src="https://www.chatbase.co/embed.min.js"
+      chatbotId="ySVh76-qh4wTS0UfXLYoE"
+      domain="www.chatbase.co"
+      defer>
+      </script>
+  </body>
+</html>
